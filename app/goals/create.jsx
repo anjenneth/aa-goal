@@ -1,11 +1,17 @@
 import { useState } from 'react'
 import { StyleSheet, Text, TextInput, Pressable } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { useGoals } from '../../hocks/useGoals'
 
 const Create = () => {
   const [goal, setGoal] = useState('')
-  
+  const { createGoal } = useGoals()
+
   const handleSubmit = async () => {
+    await createGoal({
+      goal,
+      progress:0
+    })
 
   }
 
@@ -47,7 +53,7 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 18,
-    backgroundColor: '#1c7051ff',
+    backgroundColor: '#473c0cff',
     color: 'white',
     borderRadius: 8,
   }
